@@ -1,0 +1,3 @@
+[submodule "Fireworks/vendor/spdlog"]
+	path = Fireworks/vendor/spdlog
+	url = https://github.com/gabime/spdlog
