@@ -34,6 +34,7 @@
     <ClInclude Include="src\Fireworks\Log.h">
       <Filter>Fireworks</Filter>
     </ClInclude>
+    <ClInclude Include="src\fzpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Fireworks\Application.cpp">
@@ -42,5 +43,6 @@
     <ClCompile Include="src\Fireworks\Log.cpp">
       <Filter>Fireworks</Filter>
     </ClCompile>
+    <ClCompile Include="src\fzpch.cpp" />
   </ItemGroup>
 </Project>

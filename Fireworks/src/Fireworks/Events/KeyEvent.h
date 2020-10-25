@@ -2,9 +2,6 @@
 
 #include "Event.h"
 
-#include <string>
-#include <sstream>
-
 namespace Fireworks {
 	
 	class FIREWORKS_API KeyEvent : public Event {

@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Fireworks {
 
 	class FIREWORKS_API MousedMovedEvent : public Event {

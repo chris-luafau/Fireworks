@@ -1,4 +1,4 @@
-
+#include "fzpch.h"
 #include "Application.h"
 
 #include "Events/Event.h"
