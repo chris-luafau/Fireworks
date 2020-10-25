@@ -4,6 +4,9 @@
     <Filter Include="Fireworks">
       <UniqueIdentifier>{E10BD4EE-4D76-8865-96B4-390B025E66BA}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fireworks\Events">
+      <UniqueIdentifier>{A570CBBD-9169-EA0F-BA9B-CF94A6F3C91B}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Fireworks.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\Fireworks\EntryPoint.h">
       <Filter>Fireworks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fireworks\Events\ApplicationEvent.h">
+      <Filter>Fireworks\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fireworks\Events\Events.h">
+      <Filter>Fireworks\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fireworks\Events\KeyEvent.h">
+      <Filter>Fireworks\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fireworks\Events\MouseEvent.h">
+      <Filter>Fireworks\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Fireworks\Log.h">
       <Filter>Fireworks</Filter>
