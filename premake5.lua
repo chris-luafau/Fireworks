@@ -25,8 +25,7 @@ project "Fireworks"
 
 	includedirs {
 		"%{prj.name}/vendor/spdlog/include",
-		"%{prj.name}/src/Fireworks",
-		"$(SolutionDir)Fireworks/src"
+		"%{prj.name}/src"
 	}
 
 	filter "system:windows"

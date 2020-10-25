@@ -22,7 +22,7 @@
     <ClInclude Include="src\Fireworks\Events\ApplicationEvent.h">
       <Filter>Fireworks\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Fireworks\Events\Events.h">
+    <ClInclude Include="src\Fireworks\Events\Event.h">
       <Filter>Fireworks\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Fireworks\Events\KeyEvent.h">
