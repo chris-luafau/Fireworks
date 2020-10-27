@@ -10,6 +10,13 @@ workspace "Fireworks"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory).
+-- We will add more as the projects grows.
+IncludeDir = {}
+IncludeDir["GLFW"] = "Fireworks/vendor/GLFW/include"
+
+include "Fireworks/vendor/GLFW"
+
 project "Fireworks"
 	location "Fireworks"
 	kind "SharedLib"
@@ -28,7 +35,14 @@ project "Fireworks"
 
 	includedirs {
 		"%{prj.name}/vendor/spdlog/include",
-		"%{prj.name}/src"
+		"%{prj.name}/src",
+		"%{prj.name}/Fireworks",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links {
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"

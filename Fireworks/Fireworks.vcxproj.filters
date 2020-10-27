@@ -35,6 +35,8 @@
       <Filter>Fireworks</Filter>
     </ClInclude>
     <ClInclude Include="src\fzpch.h" />
+    <ClInclude Include="src\Platform\WindowsWindow.h" />
+    <ClInclude Include="src\Fireworks\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Fireworks\Application.cpp">
@@ -44,5 +46,6 @@
       <Filter>Fireworks</Filter>
     </ClCompile>
     <ClCompile Include="src\fzpch.cpp" />
+    <ClCompile Include="src\Platform\WindowsWindow.cpp" />
   </ItemGroup>
 </Project>

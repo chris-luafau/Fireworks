@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Event.h"
+#include "Fireworks/Events/Event.h"
+
 
 namespace Fireworks {
 

@@ -1,3 +1,6 @@
 [submodule "Fireworks/vendor/spdlog"]
 	path = Fireworks/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "Fireworks/vendor/GLFW"]
+	path = Fireworks/vendor/GLFW
+	url = https://github.com/chris-luafau/glfw

@@ -1,14 +1,13 @@
 #include "fzpch.h"
 #include "Application.h"
 
-#include "Events/Event.h"
 #include "Fireworks/Events/ApplicationEvent.h"
 #include "Fireworks/Log.h"
 
 namespace Fireworks {
 
 	Application::Application() {
-
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 
 	Application::~Application() {
@@ -16,11 +15,8 @@ namespace Fireworks {
 	}
 
 	void Application::Run() {
-		// Testing
-		WindowResizeEvent e(1280, 720);
-		FZ_TRACE(e);
-
-		while (true);
+		while (m_Running) {
+			m_Window->OnUpdate();
+		}
 	}
-
 }
