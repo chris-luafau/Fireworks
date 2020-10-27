@@ -26,7 +26,7 @@ project "Fireworks"
 	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	pchheader "fzpch.h"
-	pchsource "%{prj.name}/src/fzpch.cpp"
+	pchsource "Fireworks/src/fzpch.cpp"
 
 	files {
 		"%{prj.name}/src/**.h",

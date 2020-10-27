@@ -159,16 +159,16 @@
     <ClInclude Include="src\Fireworks\Events\MouseEvent.h" />
     <ClInclude Include="src\Fireworks\Log.h" />
     <ClInclude Include="src\Fireworks\Window.h" />
-    <ClInclude Include="src\fzpch.h" />
     <ClInclude Include="src\Platform\WindowsWindow.h" />
+    <ClInclude Include="src\fzpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Fireworks\Application.cpp" />
     <ClCompile Include="src\Fireworks\Log.cpp" />
+    <ClCompile Include="src\Platform\WindowsWindow.cpp" />
     <ClCompile Include="src\fzpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\Platform\WindowsWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

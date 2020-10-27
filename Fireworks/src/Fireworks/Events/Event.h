@@ -2,6 +2,9 @@
 
 #include "Fireworks/Core.h"
 
+#include <string>
+#include <functional>
+
 namespace Fireworks {
 
 	// Events in Fireworks are currently blocking, meaning when an event occurs it
