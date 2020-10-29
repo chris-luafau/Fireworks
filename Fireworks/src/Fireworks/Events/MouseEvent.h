@@ -1,15 +1,15 @@
 #pragma once
 
 #include "Fireworks/Events/Event.h"
-
+#include <sstream>
 
 namespace Fireworks {
 
-	class FIREWORKS_API MousedMovedEvent : public Event {
+	class FIREWORKS_API MouseMovedEvent : public Event {
 	private:
 		float m_MouseX, m_MouseY;
 	public:
-		MousedMovedEvent(float x, float y)
+		MouseMovedEvent(float x, float y)
 			: m_MouseX(x), m_MouseY(y) {}
 
 		inline float GetX() const { return m_MouseX; }

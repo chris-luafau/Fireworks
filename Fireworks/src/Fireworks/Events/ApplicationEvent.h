@@ -2,6 +2,8 @@
 
 #include "Fireworks/Events/Event.h"
 
+#include <sstream>
+
 namespace Fireworks {
 	
 	class FIREWORKS_API WindowResizeEvent : public Event {
