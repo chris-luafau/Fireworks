@@ -34,6 +34,12 @@
     <ClInclude Include="src\Fireworks\Events\MouseEvent.h">
       <Filter>Fireworks\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Fireworks\Layer.h">
+      <Filter>Fireworks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fireworks\LayerStack.h">
+      <Filter>Fireworks</Filter>
+    </ClInclude>
     <ClInclude Include="src\Fireworks\Log.h">
       <Filter>Fireworks</Filter>
     </ClInclude>
@@ -44,11 +50,15 @@
       <Filter>Platform</Filter>
     </ClInclude>
     <ClInclude Include="src\fzpch.h" />
-    <ClInclude Include="src\Fireworks\Layer.h" />
-    <ClInclude Include="src\Fireworks\LayerStack.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Fireworks\Application.cpp">
+      <Filter>Fireworks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fireworks\Layer.cpp">
+      <Filter>Fireworks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fireworks\LayerStack.cpp">
       <Filter>Fireworks</Filter>
     </ClCompile>
     <ClCompile Include="src\Fireworks\Log.cpp">
@@ -58,7 +68,5 @@
       <Filter>Platform</Filter>
     </ClCompile>
     <ClCompile Include="src\fzpch.cpp" />
-    <ClCompile Include="src\Fireworks\Layer.cpp" />
-    <ClCompile Include="src\Fireworks\LayerStack.cpp" />
   </ItemGroup>
 </Project>

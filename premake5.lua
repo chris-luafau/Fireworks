@@ -61,14 +61,17 @@ project "Fireworks"
 
 	filter "configurations:Debug"
 		defines "FZ_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "FZ_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "FZ_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 
@@ -105,12 +108,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "FZ_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "FZ_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "FZ_DIST"
+		buildoptions "/MD"
 		optimize "On"
