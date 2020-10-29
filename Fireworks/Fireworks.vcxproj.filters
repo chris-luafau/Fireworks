@@ -44,6 +44,8 @@
       <Filter>Platform</Filter>
     </ClInclude>
     <ClInclude Include="src\fzpch.h" />
+    <ClInclude Include="src\Fireworks\Layer.h" />
+    <ClInclude Include="src\Fireworks\LayerStack.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Fireworks\Application.cpp">
@@ -56,5 +58,7 @@
       <Filter>Platform</Filter>
     </ClCompile>
     <ClCompile Include="src\fzpch.cpp" />
+    <ClCompile Include="src\Fireworks\Layer.cpp" />
+    <ClCompile Include="src\Fireworks\LayerStack.cpp" />
   </ItemGroup>
 </Project>

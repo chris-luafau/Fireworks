@@ -149,6 +149,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Fireworks\LayerStack.h" />
+    <ClInclude Include="src\Fireworks\Layer.h" />
     <ClInclude Include="src\Fireworks.h" />
     <ClInclude Include="src\Fireworks\Application.h" />
     <ClInclude Include="src\Fireworks\Core.h" />
@@ -163,6 +165,8 @@
     <ClInclude Include="src\fzpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Fireworks\LayerStack.cpp" />
+    <ClCompile Include="src\Fireworks\Layer.cpp" />
     <ClCompile Include="src\Fireworks\Application.cpp" />
     <ClCompile Include="src\Fireworks\Log.cpp" />
     <ClCompile Include="src\Platform\WindowsWindow.cpp" />
