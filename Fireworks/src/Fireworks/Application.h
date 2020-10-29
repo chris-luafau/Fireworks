@@ -7,8 +7,6 @@
 #include "Fireworks/Events/Event.h"
 #include "Fireworks/Events/ApplicationEvent.h"
 
-
-
 namespace Fireworks {
 
 	class FIREWORKS_API Application {

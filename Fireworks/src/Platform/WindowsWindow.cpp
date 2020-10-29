@@ -7,6 +7,7 @@
 #include "Fireworks/Events/MouseEvent.h"
 #include "Fireworks/Events/KeyEvent.h"
 
+#include <glad/glad.h>
 
 namespace Fireworks {
 	
@@ -45,6 +46,11 @@ namespace Fireworks {
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+
+		// Initialize Glad
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		FZ_CORE_ASSERT(status, "Failed to initialize Glad.");
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 

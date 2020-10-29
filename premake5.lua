@@ -14,8 +14,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- We will add more as the projects grows.
 IncludeDir = {}
 IncludeDir["GLFW"] = "Fireworks/vendor/GLFW/include"
+IncludeDir["Glad"] = "Fireworks/vendor/GLAD/include"
 
 include "Fireworks/vendor/GLFW"
+include "Fireworks/vendor/Glad"
 
 project "Fireworks"
 	location "Fireworks"
@@ -36,12 +38,14 @@ project "Fireworks"
 	includedirs {
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/src",
-		"%{prj.name}/Fireworks",
-		"%{IncludeDir.GLFW}"
+		--"%{prj.name}/Fireworks",
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links {
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -52,7 +56,8 @@ project "Fireworks"
 
 		defines {
 			"FZ_PLATFORM_WINDOWS",
-			"FZ_BUILD_DLL"
+			"FZ_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 		
 		postbuildcommands {
