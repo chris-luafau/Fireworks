@@ -16,5 +16,3 @@
 #ifdef FZ_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif
-
-

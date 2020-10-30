@@ -20,5 +20,4 @@ namespace Fireworks {
 	protected:
 		std::string m_DebugName;
 	};
-
 }

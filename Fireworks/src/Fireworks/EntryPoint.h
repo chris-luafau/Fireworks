@@ -5,7 +5,6 @@
 extern Fireworks::Application* Fireworks::CreateApplication();
 
 int main(int argc, char** argv) {
-
 	Fireworks::Log::Init();
 	FZ_CORE_WARN("Initialized Log.");
 	FZ_INFO("Welcome.");

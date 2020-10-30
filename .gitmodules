@@ -4,3 +4,6 @@
 [submodule "Fireworks/vendor/GLFW"]
 	path = Fireworks/vendor/GLFW
 	url = https://github.com/chris-luafau/glfw
+[submodule "Fireworks/vendor/imgui"]
+	path = Fireworks/vendor/imgui
+	url = https://github.com/chris-luafau/imgui/

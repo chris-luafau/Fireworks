@@ -7,8 +7,14 @@
     <Filter Include="Fireworks\Events">
       <UniqueIdentifier>{A570CBBD-9169-EA0F-BA9B-CF94A6F3C91B}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fireworks\ImGui">
+      <UniqueIdentifier>{CB256899-37B1-D55D-40C2-5852ACCC315E}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -34,6 +40,9 @@
     <ClInclude Include="src\Fireworks\Events\MouseEvent.h">
       <Filter>Fireworks\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Fireworks\ImGui\ImGuiLayer.h">
+      <Filter>Fireworks\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Fireworks\Layer.h">
       <Filter>Fireworks</Filter>
     </ClInclude>
@@ -46,6 +55,9 @@
     <ClInclude Include="src\Fireworks\Window.h">
       <Filter>Fireworks</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\WindowsWindow.h">
       <Filter>Platform</Filter>
     </ClInclude>
@@ -55,6 +67,9 @@
     <ClCompile Include="src\Fireworks\Application.cpp">
       <Filter>Fireworks</Filter>
     </ClCompile>
+    <ClCompile Include="src\Fireworks\ImGui\ImGuiLayer.cpp">
+      <Filter>Fireworks\ImGui</Filter>
+    </ClCompile>
     <ClCompile Include="src\Fireworks\Layer.cpp">
       <Filter>Fireworks</Filter>
     </ClCompile>
@@ -63,6 +78,9 @@
     </ClCompile>
     <ClCompile Include="src\Fireworks\Log.cpp">
       <Filter>Fireworks</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\WindowsWindow.cpp">
       <Filter>Platform</Filter>

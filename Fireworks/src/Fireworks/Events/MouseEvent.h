@@ -6,8 +6,6 @@
 namespace Fireworks {
 
 	class FIREWORKS_API MouseMovedEvent : public Event {
-	private:
-		float m_MouseX, m_MouseY;
 	public:
 		MouseMovedEvent(float x, float y)
 			: m_MouseX(x), m_MouseY(y) {}
@@ -23,11 +21,12 @@ namespace Fireworks {
 
 		EVENT_CLASS_TYPE(MouseMoved)
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+
+	private:
+		float m_MouseX, m_MouseY;
 	};
 
 	class FIREWORKS_API MouseScrolledEvent : public Event {
-	private:
-		float m_XOffset, m_YOffset;
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset)
 			: m_XOffset(xOffset), m_YOffset(yOffset) {}
@@ -43,14 +42,17 @@ namespace Fireworks {
 
 		EVENT_CLASS_TYPE(MouseScrolled)
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+
+	private:
+		float m_XOffset, m_YOffset;
 	};
 
 	class FIREWORKS_API MouseButtonEvent : public Event {
-
 	public:
 		inline int GetMouseButton() const { return m_Button; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+
 	protected:
 		MouseButtonEvent(int button) 
 			: m_Button(button) {}

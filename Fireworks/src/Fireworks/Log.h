@@ -6,8 +6,7 @@
 
 namespace Fireworks {
 
-	class FIREWORKS_API Log
-	{
+	class FIREWORKS_API Log {
 	public:
 		static void Init();
 
@@ -17,9 +16,7 @@ namespace Fireworks {
 	private:
 		static std::shared_ptr<spdlog::logger> s_CoreLogger;
 		static std::shared_ptr<spdlog::logger> s_ClientLogger;
-
 	};
-
 }
 
 // Core log macros
@@ -30,8 +27,8 @@ namespace Fireworks {
 #define FZ_CORE_FATAL(...) ::Fireworks::Log::GetCoreLogger()->fatal(__VA_ARGS__)
 
 // Client log macros
-#define FZ_TRACE(...)     ::Fireworks::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define FZ_INFO(...)      ::Fireworks::Log::GetClientLogger()->info(__VA_ARGS__)
-#define FZ_WARN(...)      ::Fireworks::Log::GetClientLogger()->warn(__VA_ARGS__)
-#define FZ_ERROR(...)     ::Fireworks::Log::GetClientLogger()->error(__VA_ARGS__)
-#define FZ_FATAL(...)     ::Fireworks::Log::GetClientLogger()->fatal(__VA_ARGS__)
+#define FZ_TRACE(...)      ::Fireworks::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define FZ_INFO(...)       ::Fireworks::Log::GetClientLogger()->info(__VA_ARGS__)
+#define FZ_WARN(...)       ::Fireworks::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define FZ_ERROR(...)      ::Fireworks::Log::GetClientLogger()->error(__VA_ARGS__)
+#define FZ_FATAL(...)      ::Fireworks::Log::GetClientLogger()->fatal(__VA_ARGS__)

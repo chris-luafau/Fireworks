@@ -21,6 +21,7 @@ class Sandbox : public Fireworks::Application {
 public:
 	Sandbox() {
 		PushLayer(new ExampleLayer());
+		PushLayer(new Fireworks::ImGuiLayer());
 	}
 
 	~Sandbox() {

@@ -16,9 +16,7 @@ namespace Fireworks {
 			        unsigned int width = 1280,
 			        unsigned int height = 720)
 			: Title(title), Width(width), Height(height) {}
-
 	};
-
 
 	// Interface representing a desktop system based Window.
 	class FIREWORKS_API Window {
@@ -42,5 +40,4 @@ namespace Fireworks {
 		// Create method will implemented differently based on the platform.
 		static Window* Create(const WindowProps& props = WindowProps());
 	};
-
 }

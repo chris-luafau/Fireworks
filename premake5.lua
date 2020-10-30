@@ -15,9 +15,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Fireworks/vendor/GLFW/include"
 IncludeDir["Glad"] = "Fireworks/vendor/GLAD/include"
+IncludeDir["ImGui"] = "Fireworks/vendor/imgui"
 
 include "Fireworks/vendor/GLFW"
 include "Fireworks/vendor/Glad"
+include "Fireworks/vendor/ImGui"
 
 project "Fireworks"
 	location "Fireworks"
@@ -40,12 +42,14 @@ project "Fireworks"
 		"%{prj.name}/src",
 		--"%{prj.name}/Fireworks",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links {
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 

@@ -8,7 +8,7 @@
 namespace Fireworks {
 
 	// Events in Fireworks are currently blocking, meaning when an event occurs it
-	// immediately getse dispatched and must be dealt with right then and there.
+	// immediately gets dispatched and must be dealt with right then and there.
 	// For the future, a better strategy might be to buffer events in an event
 	// bus and process them during the "event" part of the update stage.
 
@@ -54,8 +54,7 @@ namespace Fireworks {
 	class EventDispatcher {
 		template<typename T>
 		using EventFn = std::function<bool(T&)>;
-	private:
-		Event& m_Event;
+
 	public:
 		EventDispatcher(Event& event)
 			: m_Event(event) {}
@@ -68,6 +67,9 @@ namespace Fireworks {
 			}
 			return false;
 		}
+
+	private:
+		Event& m_Event;
 	};
 
 	inline std::ostream& operator<<(std::ostream& os, const Event& e) {

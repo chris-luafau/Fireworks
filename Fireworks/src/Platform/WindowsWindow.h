@@ -7,21 +7,6 @@
 namespace Fireworks {
 
 	class WindowsWindow : public Window {
-	private:
-		virtual void Init(const WindowProps& props);
-		virtual void Shutdown();
-	private:
-		GLFWwindow* m_Window;
-
-		struct WindowData {
-			std::string Title;
-			unsigned int Width, Height;
-			bool VSync;
-
-			EventCallbackFn EventCallback;
-		};
-
-		WindowData m_Data;
 	public:
 		WindowsWindow(const WindowProps& props);
 		virtual ~WindowsWindow();
@@ -35,6 +20,22 @@ namespace Fireworks {
 		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
-	};
 
+	private:
+		virtual void Init(const WindowProps& props);
+		virtual void Shutdown();
+
+	private:
+		GLFWwindow* m_Window;
+
+		struct WindowData {
+			std::string Title;
+			unsigned int Width, Height;
+			bool VSync;
+
+			EventCallbackFn EventCallback;
+		};
+
+		WindowData m_Data;
+	};
 }

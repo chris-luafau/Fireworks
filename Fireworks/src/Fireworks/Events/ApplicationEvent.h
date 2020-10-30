@@ -7,8 +7,6 @@
 namespace Fireworks {
 	
 	class FIREWORKS_API WindowResizeEvent : public Event {
-	private:
-		unsigned int m_Width, m_Height;
 	public:
 		WindowResizeEvent(unsigned int width, unsigned int height)
 			: m_Width(width), m_Height(height) {}
@@ -24,6 +22,9 @@ namespace Fireworks {
 
 		EVENT_CLASS_TYPE(WindowResize)
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
+
+	private:
+		unsigned int m_Width, m_Height;
 
 	};
 
