@@ -60,9 +60,9 @@ namespace Fireworks {
 		int m_Button;
 	};
 
-	class FIREWORKS_API MousedButtonPressedEvent : public MouseButtonEvent {
+	class FIREWORKS_API MouseButtonPressedEvent : public MouseButtonEvent {
 	public:
-		MousedButtonPressedEvent(int button)
+		MouseButtonPressedEvent(int button)
 			: MouseButtonEvent(button) {}
 
 		std::string ToString() const override {
