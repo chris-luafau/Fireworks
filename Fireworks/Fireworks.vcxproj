@@ -159,9 +159,11 @@
     <ClInclude Include="src\Fireworks\Events\MouseEvent.h" />
     <ClInclude Include="src\Fireworks\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Fireworks\Input.h" />
+    <ClInclude Include="src\Fireworks\KeyCodes.h" />
     <ClInclude Include="src\Fireworks\Layer.h" />
     <ClInclude Include="src\Fireworks\LayerStack.h" />
     <ClInclude Include="src\Fireworks\Log.h" />
+    <ClInclude Include="src\Fireworks\MouseButtonCodes.h" />
     <ClInclude Include="src\Fireworks\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />

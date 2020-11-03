@@ -1,4 +1,3 @@
-
 #include <Fireworks.h>
 
 class ExampleLayer : public Fireworks::Layer {
@@ -9,11 +8,19 @@ public:
 	}
 
 	void OnUpdate() override {
-		FZ_INFO("ExampleLayer::Update");
+		// Test FZ Keycodes.
+		if (Fireworks::Input::IsKeyPressed(FZ_KEY_TAB))
+			FZ_TRACE("Tab key pressed (polled).");
 	}
 
 	void OnEvent(Fireworks::Event& event) override {
-		FZ_TRACE("{0}", event);
+		// Temporary: Checking keycodes.
+		if (event.GetEventType() == Fireworks::EventType::KeyPressed) {
+			Fireworks::KeyPressedEvent& e = (Fireworks::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == FZ_KEY_TAB)
+				FZ_TRACE("Tab key pressed (event/pushed).");
+			FZ_TRACE("{0}",(char)e.GetKeyCode());
+		}
 	}
 };
 

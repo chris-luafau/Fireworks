@@ -71,6 +71,8 @@
       <Filter>Platform</Filter>
     </ClInclude>
     <ClInclude Include="src\fzpch.h" />
+    <ClInclude Include="src\Fireworks\KeyCodes.h" />
+    <ClInclude Include="src\Fireworks\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Fireworks\Application.cpp">

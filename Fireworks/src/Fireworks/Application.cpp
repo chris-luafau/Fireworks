@@ -53,10 +53,6 @@ namespace Fireworks {
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
-			
-			// Check mouse position.
-			auto [x, y] = Input::GetMousePosition();
-			FZ_CORE_TRACE("{0}, {1}", x, y);
 
 			m_Window->OnUpdate();
 		}
