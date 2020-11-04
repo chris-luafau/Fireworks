@@ -16,6 +16,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Fireworks/vendor/GLFW/include"
 IncludeDir["Glad"] = "Fireworks/vendor/GLAD/include"
 IncludeDir["ImGui"] = "Fireworks/vendor/imgui"
+IncludeDir["glm"] = "Fireworks/vendor/glm"
 
 include "Fireworks/vendor/GLFW"
 include "Fireworks/vendor/Glad"
@@ -35,7 +36,9 @@ project "Fireworks"
 
 	files {
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs {
@@ -44,7 +47,8 @@ project "Fireworks"
 		--"%{prj.name}/Fireworks",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links {
@@ -100,7 +104,8 @@ project "Sandbox"
 
 	includedirs {
 		"Fireworks/vendor/spdlog/include",
-		"Fireworks/src"
+		"Fireworks/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links {
