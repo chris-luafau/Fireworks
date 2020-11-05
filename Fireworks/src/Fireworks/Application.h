@@ -7,6 +7,8 @@
 #include "Fireworks/Events/Event.h"
 #include "Fireworks/Events/ApplicationEvent.h"
 
+#include "Fireworks/ImGui/ImGuiLayer.h"
+
 namespace Fireworks {
 
 	class FIREWORKS_API Application {
@@ -28,6 +30,7 @@ namespace Fireworks {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

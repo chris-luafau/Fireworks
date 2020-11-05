@@ -1,5 +1,7 @@
 #include <Fireworks.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Fireworks::Layer {
 public:
 	ExampleLayer() 
@@ -11,6 +13,12 @@ public:
 		// Test FZ Keycodes.
 		if (Fireworks::Input::IsKeyPressed(FZ_KEY_TAB))
 			FZ_TRACE("Tab key pressed (polled).");
+	}
+
+	virtual void OnImGuiRender() override {
+		ImGui::Begin("Test");
+		ImGui::Text("Hey everyone.");
+		ImGui::End();
 	}
 
 	void OnEvent(Fireworks::Event& event) override {
@@ -28,7 +36,6 @@ class Sandbox : public Fireworks::Application {
 public:
 	Sandbox() {
 		PushLayer(new ExampleLayer());
-		PushLayer(new Fireworks::ImGuiLayer());
 	}
 
 	~Sandbox() {

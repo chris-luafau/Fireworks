@@ -20,7 +20,7 @@ IncludeDir["glm"] = "Fireworks/vendor/glm"
 
 include "Fireworks/vendor/GLFW"
 include "Fireworks/vendor/Glad"
-include "Fireworks/vendor/ImGui"
+include "Fireworks/vendor/imgui"
 
 project "Fireworks"
 	location "Fireworks"
@@ -105,6 +105,7 @@ project "Sandbox"
 	includedirs {
 		"Fireworks/vendor/spdlog/include",
 		"Fireworks/src",
+		"Fireworks/vendor",
 		"%{IncludeDir.glm}"
 	}
 

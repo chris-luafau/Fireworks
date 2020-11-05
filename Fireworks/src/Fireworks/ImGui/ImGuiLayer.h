@@ -13,9 +13,15 @@ namespace Fireworks {
 		ImGuiLayer();
 		~ImGuiLayer();
 
-		void OnAttach();
-		void OnDetach();
-		void OnUpdate();
+		virtual void OnAttach() override;
+		virtual void OnDetach() override;
+		virtual void OnImGuiRender() override;
+		/***
+		virtual void OnUpdate() override;
+		*/
+		void Begin();
+		void End();
+		/***
 		void OnEvent(Event& event);
 
 	private:
@@ -27,7 +33,7 @@ namespace Fireworks {
 		bool OnKeyReleasedEvent(KeyReleasedEvent& e);
 		bool OnKeyTypedEvent(KeyTypedEvent& e);
 		bool OnWindowResizeEvent(WindowResizeEvent& e);
-
+		*/
 	private:
 		float m_Time = 0.0f;
 	};
