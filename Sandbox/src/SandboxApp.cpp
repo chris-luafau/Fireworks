@@ -16,9 +16,11 @@ public:
 	}
 
 	virtual void OnImGuiRender() override {
+		/*
 		ImGui::Begin("Test");
 		ImGui::Text("Hey everyone.");
 		ImGui::End();
+		*/
 	}
 
 	void OnEvent(Fireworks::Event& event) override {

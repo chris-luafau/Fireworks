@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef FZ_PLATFORM_WINDOWS
+#if FZ_DYNAMIC_LINK
 	#ifdef FZ_BUILD_DLL
 		#define FIREWORKS_API __declspec(dllexport)
 	#else
 		#define FIREWORKS_API __declspec(dllimport)
 	#endif
+#else
+	#define FIREWORKS_API
+#endif
 #else
 	#error Fireworks only supports Windows :[
 #endif
