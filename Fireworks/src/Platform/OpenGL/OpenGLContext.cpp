@@ -20,6 +20,11 @@ namespace Fireworks {
 		// Initialize Glad. 
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		FZ_CORE_ASSERT(status, "Failed to initialize Glad.");
+
+		FZ_CORE_INFO("OpenGL Info:");
+		FZ_CORE_INFO("  Vendor: {0}", glGetString(GL_VENDOR));
+		FZ_CORE_INFO("  Renderer: {0}", glGetString(GL_RENDERER));
+		FZ_CORE_INFO("  Version: {0}", glGetString(GL_VERSION));
 	}
 
 	void OpenGLContext::SwapBuffers() {
