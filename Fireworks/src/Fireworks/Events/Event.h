@@ -1,9 +1,7 @@
 #pragma once
 
+#include "fzpch.h"
 #include "Fireworks/Core.h"
-
-#include <string>
-#include <functional>
 
 namespace Fireworks {
 

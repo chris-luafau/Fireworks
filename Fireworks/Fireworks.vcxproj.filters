@@ -13,8 +13,14 @@
     <Filter Include="src\Fireworks\ImGui">
       <UniqueIdentifier>{E24CD0B3-4EAE-ADC1-D71B-F473437CE480}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Fireworks\Renderer">
+      <UniqueIdentifier>{5EA03C4C-4A9A-659E-3307-FCAE1FA0CB0A}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
@@ -87,14 +93,20 @@
     <ClInclude Include="src\Fireworks\MouseButtonCodes.h">
       <Filter>src\Fireworks</Filter>
     </ClInclude>
+    <ClInclude Include="src\Fireworks\Renderer\GraphicsContext.h">
+      <Filter>src\Fireworks\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Fireworks\Window.h">
       <Filter>src\Fireworks</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>src\Platform\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\WindowsWindow.h">
-      <Filter>src\Platform</Filter>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>src\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\fzpch.h">
       <Filter>src</Filter>
@@ -1343,11 +1355,14 @@
     <ClCompile Include="src\Fireworks\Log.cpp">
       <Filter>src\Fireworks</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\WindowsWindow.cpp">
-      <Filter>src\Platform</Filter>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\fzpch.cpp">
       <Filter>src</Filter>

@@ -155,9 +155,11 @@
     <ClInclude Include="src\Fireworks\LayerStack.h" />
     <ClInclude Include="src\Fireworks\Log.h" />
     <ClInclude Include="src\Fireworks\MouseButtonCodes.h" />
+    <ClInclude Include="src\Fireworks\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Fireworks\Window.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
-    <ClInclude Include="src\Platform\WindowsWindow.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\fzpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
     <ClInclude Include="vendor\glm\glm\detail\_features.hpp" />
@@ -575,8 +577,9 @@
     <ClCompile Include="src\Fireworks\Layer.cpp" />
     <ClCompile Include="src\Fireworks\LayerStack.cpp" />
     <ClCompile Include="src\Fireworks\Log.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
-    <ClCompile Include="src\Platform\WindowsWindow.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\fzpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
@@ -595,4 +598,4 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
-</Project>
+</Project> 
