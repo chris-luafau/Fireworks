@@ -1336,6 +1336,9 @@
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
     <ClInclude Include="src\Fireworks\Renderer\Shader.h" />
+    <ClInclude Include="src\Fireworks\Renderer\Buffer.h" />
+    <ClInclude Include="src\Fireworks\Renderer\Renderer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Fireworks\Application.cpp">
@@ -1369,5 +1372,8 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Fireworks\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Fireworks\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Fireworks\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
   </ItemGroup>
 </Project>

@@ -31,9 +31,6 @@ namespace Fireworks {
 		glGenVertexArrays(1, &m_VertexArray);
 		glBindVertexArray(m_VertexArray);
 
-		glGenBuffers(1, &m_VertexBuffer);
-		glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
-
 		float vertices[3 * 3] = {
 			-0.5f, -0.5f, 0.0f,
 			 0.5f, -0.5f, 0.0f,
@@ -41,7 +38,7 @@ namespace Fireworks {
 		};
 
 		// Upload vertices to the GPU.
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		// Tell OpenGL the layout/format of the data.
 		// I.e. OpenGL doesn't know that the vertices data is a 3x3 matrix.
@@ -50,13 +47,10 @@ namespace Fireworks {
 		// Start at index 0, there are 3 items, they're floats, won't be normalized, reserve space, and there is no offset between
 		// multiple attributes (we only have 1 attribute in this case - vertices).
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-
-		glGenBuffers(1, &m_IndexBuffer);
-		// OpenGL refers to index buffers as element buffers.
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
-
-		unsigned int indices[3] = { 0, 1, 2 };
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		
+		uint32_t indices[3] = { 0, 1, 2 };
+		// Abstract the creation of the index buffer by calling our custom API instead of directly calling OpenGL functions.
+		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 
 		// Shader code: Vertex shader and Fragment shader.
 		// Vertex shader handles the position of the vertices.
@@ -126,7 +120,7 @@ namespace Fireworks {
 			// Bind the vertex array and draw.
 			m_Shader->Bind();
 			glBindVertexArray(m_VertexArray);
-			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
+			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
 
 			m_ImGuiLayer->Begin(); 
 			for (Layer* layer : m_LayerStack)
