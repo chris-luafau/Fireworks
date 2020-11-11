@@ -1,4 +1,5 @@
 #pragma once
+#pragma warning(disable : 26495 26812 6387 26451 26812)
 
 #include "Core.h"
 #include "spdlog/spdlog.h"
