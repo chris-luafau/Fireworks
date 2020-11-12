@@ -18,7 +18,7 @@ namespace Fireworks {
 	class FIREWORKS_API Application {
 	public:
 		Application();
-		virtual ~Application();  // Must be virtual since it will be inherited by the Sandbox application.
+		virtual ~Application() = default;  // Must be virtual since it will be inherited by the Sandbox application.
 
 		void Run();
 

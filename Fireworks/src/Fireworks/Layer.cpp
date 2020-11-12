@@ -8,6 +8,4 @@ namespace Fireworks {
 		: m_DebugName(debugName) {
 
 	}
-
-	Layer::~Layer() {}
 }

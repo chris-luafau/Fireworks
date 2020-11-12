@@ -23,7 +23,7 @@ namespace Fireworks {
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
 
-		virtual ~Window() {}
+		virtual ~Window() = default;
 
 		// We are only creating an interface so all the following methods are pure virtual.
 
