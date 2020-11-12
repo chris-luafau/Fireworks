@@ -13,6 +13,4 @@ namespace Fireworks {
 		virtual float GetMouseXImpl() override;
 		virtual float GetMouseYImpl() override;
 	};
-
-
 }

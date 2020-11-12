@@ -16,5 +16,4 @@ namespace Fireworks {
 	private:
 		GLFWwindow* m_WindowHandle;
 	};
-
 }

@@ -15,8 +15,7 @@ namespace Fireworks {
 		return state == GLFW_PRESS || state == GLFW_REPEAT;
 	}
 
-	bool WindowsInput::IsMouseButtonPressedImpl(int button)
-	{
+	bool WindowsInput::IsMouseButtonPressedImpl(int button) {
 		auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
 		auto state = glfwGetMouseButton(window, button);
 		return state == GLFW_PRESS;
@@ -41,5 +40,4 @@ namespace Fireworks {
 
 		return y;
 	}
-
 }

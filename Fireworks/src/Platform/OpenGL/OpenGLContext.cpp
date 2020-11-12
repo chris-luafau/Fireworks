@@ -9,8 +9,7 @@
 namespace Fireworks {
 	
 	OpenGLContext::OpenGLContext(GLFWwindow* windowHandle) 
-		: m_WindowHandle(windowHandle)
-	{
+		: m_WindowHandle(windowHandle) {
 		FZ_CORE_ASSERT(windowHandle, "Window handle is null.");
 	}
 

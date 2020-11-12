@@ -20,8 +20,7 @@ namespace Fireworks {
 		// Check to see if the vertex shader compiled successfully.
 		GLint isCompiled = 0;
 		glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &isCompiled);
-		if (isCompiled == GL_FALSE)
-		{
+		if (isCompiled == GL_FALSE) {
 			GLint maxLength = 0;
 			glGetShaderiv(vertexShader, GL_INFO_LOG_LENGTH, &maxLength);
 
@@ -51,8 +50,7 @@ namespace Fireworks {
 
 		// Check to see if the fragment shader compiled successfully.
 		glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &isCompiled);
-		if (isCompiled == GL_FALSE)
-		{
+		if (isCompiled == GL_FALSE) {
 			GLint maxLength = 0;
 			glGetShaderiv(fragmentShader, GL_INFO_LOG_LENGTH, &maxLength);
 
@@ -89,8 +87,7 @@ namespace Fireworks {
 		// Note the different functions here: glGetProgram* instead of glGetShader*.
 		GLint isLinked = 0;
 		glGetProgramiv(program, GL_LINK_STATUS, (int*)&isLinked);
-		if (isLinked == GL_FALSE)
-		{
+		if (isLinked == GL_FALSE) {
 			GLint maxLength = 0;
 			glGetProgramiv(program, GL_INFO_LOG_LENGTH, &maxLength);
 

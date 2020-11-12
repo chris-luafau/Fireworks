@@ -25,5 +25,4 @@ namespace Fireworks {
 	private:
 		static Input* s_Instance;
 	};
-
 }
