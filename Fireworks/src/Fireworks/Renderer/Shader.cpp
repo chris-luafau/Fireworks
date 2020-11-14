@@ -123,5 +123,4 @@ namespace Fireworks {
 	void Shader::Unbind() const {
 		glUseProgram(0);
 	}
-
 }

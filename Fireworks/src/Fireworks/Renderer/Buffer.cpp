@@ -13,7 +13,7 @@ namespace Fireworks {
 			case RendererAPI::OpenGL:  return new OpenGLVertexBuffer(vertices, size);
 		}
 
-		FZ_CORE_ASSERT(false, "Unknown RendererAPI!");
+		FZ_CORE_ASSERT(false, "Unknown RendererAPI.");
 		return nullptr;
 	}
 
@@ -23,8 +23,7 @@ namespace Fireworks {
 			case RendererAPI::OpenGL:  return new OpenGLIndexBuffer(indices, size);
 		}
 
-		FZ_CORE_ASSERT(false, "Unknown RendererAPI!");
+		FZ_CORE_ASSERT(false, "Unknown RendererAPI.");
 		return nullptr;
 	}
-
 }

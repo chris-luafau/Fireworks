@@ -12,6 +12,25 @@ namespace Fireworks {
 
 	Application* Application::s_Instance = nullptr;
 
+	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type) {
+		switch (type) {
+			case Fireworks::ShaderDataType::Float:    return GL_FLOAT;
+			case Fireworks::ShaderDataType::Float2:   return GL_FLOAT;
+			case Fireworks::ShaderDataType::Float3:   return GL_FLOAT;
+			case Fireworks::ShaderDataType::Float4:   return GL_FLOAT;
+			case Fireworks::ShaderDataType::Mat3:     return GL_FLOAT;
+			case Fireworks::ShaderDataType::Mat4:     return GL_FLOAT;
+			case Fireworks::ShaderDataType::Int:      return GL_INT;
+			case Fireworks::ShaderDataType::Int2:     return GL_INT;
+			case Fireworks::ShaderDataType::Int3:     return GL_INT;
+			case Fireworks::ShaderDataType::Int4:     return GL_INT;
+			case Fireworks::ShaderDataType::Bool:     return GL_BOOL;
+		}
+
+		FZ_CORE_ASSERT(false, "Unknown ShaderDataType.");
+		return 0;
+	}
+
 	Application::Application() {
 		FZ_CORE_ASSERT(s_Insatance, "Application already exists.");
 		s_Instance = this;
@@ -31,22 +50,38 @@ namespace Fireworks {
 		glGenVertexArrays(1, &m_VertexArray);
 		glBindVertexArray(m_VertexArray);
 
-		float vertices[3 * 3] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.0f,  0.5f, 0.0f
+		float vertices[3 * 7] = {
+			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
+			 0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f,
+			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 
 		// Upload vertices to the GPU.
 		m_VertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 
-		// Tell OpenGL the layout/format of the data.
-		// I.e. OpenGL doesn't know that the vertices data is a 3x3 matrix.
-		// It just sees them as bytes of data.
-		glEnableVertexAttribArray(0);
-		// Start at index 0, there are 3 items, they're floats, won't be normalized, reserve space, and there is no offset between
-		// multiple attributes (we only have 1 attribute in this case - vertices).
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
+		{
+			BufferLayout layout = {
+				{ ShaderDataType::Float3, "a_Position" },
+				{ ShaderDataType::Float4, "a_Color" }
+			};
+
+			m_VertexBuffer->SetLayout(layout);
+		}
+
+		uint32_t index = 0;
+		const auto& layout = m_VertexBuffer->GetLayout();
+
+		for (const auto& element : layout) {
+			glEnableVertexAttribArray(index);
+			glVertexAttribPointer(
+				index,
+				element.GetComponentCount(),
+				ShaderDataTypeToOpenGLBaseType(element.Type),
+				element.Normalized ? GL_TRUE : GL_FALSE,
+				layout.GetStride(),
+				(const void*)element.Offset);
+			index++;
+		}
 		
 		uint32_t indices[3] = { 0, 1, 2 };
 		// Abstract the creation of the index buffer by calling our custom API instead of directly calling OpenGL functions.
@@ -57,12 +92,15 @@ namespace Fireworks {
 		std::string vertexSrc = R"(
 			#version 330 core
 			
-			layout(location = 0) in vec3 a_Position;	
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec4 a_Color;
 		
-			out vec3 v_Position;			
+			out vec3 v_Position;
+			out vec4 v_Color;
 
 			void main() {
 				v_Position = a_Position;
+				v_Color = a_Color;
 				gl_Position = vec4(a_Position, 1.0);
 			}
 		)";
@@ -77,10 +115,12 @@ namespace Fireworks {
 			
 			layout(location = 0) out vec4 color;
 
-			in vec3 v_Position;			
+			in vec3 v_Position;
+			in vec4 v_Color;
 
 			void main() {
 				color = vec4(v_Position * 0.5 + 0.5, 1.0);
+				color = v_Color;
 			}
 		)";
 

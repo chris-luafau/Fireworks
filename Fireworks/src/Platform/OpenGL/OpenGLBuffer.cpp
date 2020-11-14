@@ -49,5 +49,4 @@ namespace Fireworks {
 	void OpenGLIndexBuffer::Unbind() const {
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}
-
 }
