@@ -8,10 +8,11 @@
 #include "Fireworks/Events/ApplicationEvent.h"
 
 #include "Fireworks/ImGui/ImGuiLayer.h"
-#include "Fireworks/Renderer/Buffer.h"
 
 // TEMPORARY
 #include "Fireworks/Renderer/Shader.h"
+#include "Fireworks/Renderer/Buffer.h"
+#include "Fireworks/Renderer/VertexArray.h"
 
 namespace Fireworks {
 
@@ -38,10 +39,11 @@ namespace Fireworks {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		unsigned int m_VertexArray;
-		std::unique_ptr<VertexBuffer> m_VertexBuffer;
-		std::unique_ptr<IndexBuffer> m_IndexBuffer;
-		std::unique_ptr<Shader> m_Shader;
+		std::shared_ptr<Shader> m_Shader;
+		std::shared_ptr<VertexArray> m_VertexArray;
+
+		std::shared_ptr<Shader> m_BlueShader;
+		std::shared_ptr<VertexArray> m_SquareVA;
 
 	private:
 		static Application* s_Instance;

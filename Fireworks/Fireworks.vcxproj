@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Fireworks.h" />
     <ClInclude Include="src\Fireworks\Application.h" />
     <ClInclude Include="src\Fireworks\Core.h" />
@@ -573,8 +574,10 @@
     <ClInclude Include="vendor\glm\glm\vec3.hpp" />
     <ClInclude Include="vendor\glm\glm\vec4.hpp" />
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
+    <ClInclude Include="src\Fireworks\Renderer\VertexArray.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Fireworks\Application.cpp" />
     <ClCompile Include="src\Fireworks\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Fireworks\ImGui\ImGuiLayer.cpp" />
@@ -591,6 +594,7 @@
     <ClCompile Include="src\fzpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Fireworks\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
