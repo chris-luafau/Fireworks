@@ -2,9 +2,10 @@
 #include "Application.h"
 
 #include "Fireworks/Log.h"
-#include "Input.h"
 
-#include <glad/glad.h>
+#include "Fireworks/Renderer/Renderer.h"
+
+#include "Input.h"
 
 namespace Fireworks {
 
@@ -13,7 +14,7 @@ namespace Fireworks {
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application() {
-		FZ_CORE_ASSERT(s_Insatance, "Application already exists.");
+		FZ_CORE_ASSERT(s_Instance, "Application already exists.");
 		s_Instance = this;
 
 		m_Window = std::unique_ptr<Window>(Window::Create());
@@ -23,9 +24,7 @@ namespace Fireworks {
 		PushOverlay(m_ImGuiLayer);
 
 		// To render a triangle, we need:
-		// Vertex Array
-		// Vertex Buffer
-		// Index buffer
+		// Vertex Array -> Holds references to the vertex and index buffers
 		// Shader --> For now, we will use the shaders provided by the GPU.
 
 		m_VertexArray.reset(VertexArray::Create());
@@ -162,17 +161,19 @@ namespace Fireworks {
 
 	void Application::Run() {
 		while (m_Running) {
-			glClearColor(0.1f, 0.1f, 0.1f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+			RenderCommand::Clear();
 
-			m_BlueShader->Bind();
-			m_SquareVA->Bind();
-			glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::BeginScene();
+			{
+				m_BlueShader->Bind();
+				Renderer::Submit(m_SquareVA);
 
-			// Bind the vertex array and draw.
-			m_Shader->Bind();
-			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+				m_Shader->Bind();
+				Renderer::Submit(m_VertexArray);
+
+				Renderer::EndScene();
+			}
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();

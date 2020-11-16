@@ -140,6 +140,9 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Fireworks\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Fireworks\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Fireworks.h" />
     <ClInclude Include="src\Fireworks\Application.h" />
@@ -577,6 +580,9 @@
     <ClInclude Include="src\Fireworks\Renderer\VertexArray.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Fireworks\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Fireworks\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Fireworks\Application.cpp" />
     <ClCompile Include="src\Fireworks\ImGui\ImGuiBuild.cpp" />
