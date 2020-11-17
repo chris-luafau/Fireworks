@@ -7,5 +7,4 @@
 namespace Fireworks {
 
 	RendererAPI* RenderCommand::s_RendererAPI = new OpenGLRendererAPI;
-
 }

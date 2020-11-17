@@ -25,7 +25,6 @@ namespace Fireworks {
 
 	private:
 		unsigned int m_Width, m_Height;
-
 	};
 
 	class FIREWORKS_API WindowCloseEvent : public Event {

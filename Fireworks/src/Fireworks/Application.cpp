@@ -104,7 +104,7 @@ namespace Fireworks {
 		squareVB.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
 			{ ShaderDataType::Float3, "a_Position" }
-			});
+		});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
@@ -131,7 +131,7 @@ namespace Fireworks {
 			in vec3 v_Position;
 			void main()
 			{
-				color = vec4(0.2, 0.3, 0.8, 1.0);
+				color = vec4(0.2, 0.3, 0.5, 1.0);
 			}
 		)";
 
