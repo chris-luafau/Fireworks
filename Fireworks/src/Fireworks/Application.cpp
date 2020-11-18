@@ -13,7 +13,9 @@ namespace Fireworks {
 
 	Application* Application::s_Instance = nullptr;
 
-	Application::Application() {
+	Application::Application() 
+		: m_Camera(-1.0f, 1.0f, -1.0f, 1.0f) {
+
 		FZ_CORE_ASSERT(s_Instance, "Application already exists.");
 		s_Instance = this;
 
@@ -67,14 +69,16 @@ namespace Fireworks {
 			
 			layout(location = 0) in vec3 a_Position;
 			layout(location = 1) in vec4 a_Color;
-		
+			
+			uniform mat4 u_ProjectionView;
+
 			out vec3 v_Position;
 			out vec4 v_Color;
 
 			void main() {
 				v_Position = a_Position;
 				v_Color = a_Color;
-				gl_Position = vec4(a_Position, 1.0);
+				gl_Position = u_ProjectionView * vec4(a_Position, 1.0);
 			}
 		)";
 
@@ -116,11 +120,15 @@ namespace Fireworks {
 			#version 330 core
 			
 			layout(location = 0) in vec3 a_Position;
+
+			uniform mat4 u_ProjectionView;
+
 			out vec3 v_Position;
+
 			void main()
 			{
 				v_Position = a_Position;
-				gl_Position = vec4(a_Position, 1.0);	
+				gl_Position = u_ProjectionView * vec4(a_Position, 1.0);	
 			}
 		)";
 
@@ -128,7 +136,9 @@ namespace Fireworks {
 			#version 330 core
 			
 			layout(location = 0) out vec4 color;
+
 			in vec3 v_Position;
+
 			void main()
 			{
 				color = vec4(0.2, 0.3, 0.5, 1.0);
@@ -167,9 +177,11 @@ namespace Fireworks {
 			Renderer::BeginScene();
 			{
 				m_BlueShader->Bind();
+				m_BlueShader->UploadUniformMat4("u_ProjectionView", m_Camera.GetProjectionViewMatrix());
 				Renderer::Submit(m_SquareVA);
 
 				m_Shader->Bind();
+				m_BlueShader->UploadUniformMat4("u_ProjectionView", m_Camera.GetProjectionViewMatrix());
 				Renderer::Submit(m_VertexArray);
 
 				Renderer::EndScene();

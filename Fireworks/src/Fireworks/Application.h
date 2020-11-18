@@ -14,6 +14,8 @@
 #include "Fireworks/Renderer/Buffer.h"
 #include "Fireworks/Renderer/VertexArray.h"
 
+#include "Fireworks/Renderer/OrthographicCamera.h"
+
 namespace Fireworks {
 
 	class FIREWORKS_API Application {
@@ -45,6 +47,8 @@ namespace Fireworks {
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
 
+		OrthographicCamera m_Camera;
+
 	private:
 		static Application* s_Instance;
 	};
@@ -52,4 +56,3 @@ namespace Fireworks {
 	// To be defined in CLIENT
 	Application* CreateApplication();
 }
-
