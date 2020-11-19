@@ -14,7 +14,7 @@ namespace Fireworks {
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application() 
-		: m_Camera(-1.0f, 1.0f, -1.0f, 1.0f) {
+		: m_Camera(-1.6f, 1.6f, -0.9f, 0.9f) {
 
 		FZ_CORE_ASSERT(s_Instance, "Application already exists.");
 		s_Instance = this;
@@ -174,16 +174,13 @@ namespace Fireworks {
 			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 			RenderCommand::Clear();
 
-			Renderer::BeginScene();
+			m_Camera.SetPosition({0.2f, 0.2f, 0.0f});
+			m_Camera.SetRotation(45.0f);
+
+			Renderer::BeginScene(m_Camera);
 			{
-				m_BlueShader->Bind();
-				m_BlueShader->UploadUniformMat4("u_ProjectionView", m_Camera.GetProjectionViewMatrix());
-				Renderer::Submit(m_SquareVA);
-
-				m_Shader->Bind();
-				m_BlueShader->UploadUniformMat4("u_ProjectionView", m_Camera.GetProjectionViewMatrix());
-				Renderer::Submit(m_VertexArray);
-
+				Renderer::Submit(m_BlueShader, m_SquareVA);
+				Renderer::Submit(m_Shader, m_VertexArray);
 				Renderer::EndScene();
 			}
 

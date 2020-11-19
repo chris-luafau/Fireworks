@@ -28,7 +28,7 @@ namespace Fireworks {
 		// For GLM, we have to do Projection * View, not the other way around since matrices in OpenGL use column-major notation.
 		glm::mat4 m_ProjectionViewMatrix;
 
-		glm::vec3 m_Position;
+		glm::vec3 m_Position = {0.0f, 0.0f, 0.0f};
 		float m_Rotation = 0.0f;
 	};
 }

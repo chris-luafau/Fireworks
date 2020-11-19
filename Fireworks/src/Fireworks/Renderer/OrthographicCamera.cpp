@@ -14,7 +14,7 @@ namespace Fireworks {
 	void OrthographicCamera::RecalculateViewMatrix() {
 		// Start w/ the identity matrix --> translate it by m_Position and multiply by the rotation matrix.
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), m_Position) * 
-			glm::rotate(glm::mat4(1.0f), m_Rotation, glm::vec3(0,0,1));
+			glm::rotate(glm::mat4(1.0f), glm::radians(m_Rotation), glm::vec3(0,0,1));
 
 		// Invert the transform matrix
 		m_ViewMatrix = glm::inverse(transform);
