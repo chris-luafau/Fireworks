@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Fireworks/Core.h"
+#include "Fireworks/Core/Timestep.h"
 #include "Fireworks/Events/Event.h"
 
 namespace Fireworks {
@@ -12,7 +13,7 @@ namespace Fireworks {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep timestep) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 

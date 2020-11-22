@@ -9,12 +9,7 @@
 
 #include "Fireworks/ImGui/ImGuiLayer.h"
 
-// TEMPORARY
-#include "Fireworks/Renderer/Shader.h"
-#include "Fireworks/Renderer/Buffer.h"
-#include "Fireworks/Renderer/VertexArray.h"
-
-#include "Fireworks/Renderer/OrthographicCamera.h"
+#include "Fireworks/Core/Timestep.h"
 
 namespace Fireworks {
 
@@ -36,10 +31,12 @@ namespace Fireworks {
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
+	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+		float m_LastFrameTime = 0.0f;
 
 	private:
 		static Application* s_Instance;

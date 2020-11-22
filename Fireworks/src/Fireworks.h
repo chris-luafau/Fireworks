@@ -6,6 +6,8 @@
 #include "Fireworks/Layer.h"
 #include "Fireworks/Log.h"
 
+#include "Fireworks/Core/Timestep.h"
+
 #include "Fireworks/Input.h"
 #include "Fireworks/KeyCodes.h"
 #include "Fireworks/MouseButtonCodes.h"

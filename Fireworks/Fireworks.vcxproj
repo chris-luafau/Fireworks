@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Fireworks\Core\Timestep.h" />
     <ClInclude Include="src\Fireworks\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Fireworks\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Fireworks\Renderer\RendererAPI.h" />
