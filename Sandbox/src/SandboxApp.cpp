@@ -2,10 +2,12 @@
 
 #include "imgui/imgui.h"
 
+#include "glm/gtc/matrix_transform.hpp"
+
 class ExampleLayer : public Fireworks::Layer {
 public:
 	ExampleLayer() 
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f) {
+		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f), m_SquarePosition(0.0f) {
 
 		// To render a triangle, we need:
 		// Vertex Array -> Holds references to the vertex and index buffers
@@ -38,10 +40,10 @@ public:
 		m_SquareVA.reset(Fireworks::VertexArray::Create());
 
 		float squareVertices[3 * 4] = {
-			-0.75f, -0.75f, 0.0f,
-			 0.75f, -0.75f, 0.0f,
-			 0.75f,  0.75f, 0.0f,
-			-0.75f,  0.75f, 0.0f
+			-0.5f, -0.5f, 0.0f,
+			 0.5f, -0.5f, 0.0f,
+			 0.5f,  0.5f, 0.0f,
+			-0.5f,  0.5f, 0.0f
 		};
 
 		// Shader code: Vertex shader and Fragment shader.
@@ -53,6 +55,7 @@ public:
 			layout(location = 1) in vec4 a_Color;
 			
 			uniform mat4 u_ProjectionView;
+			uniform mat4 u_Transform;
 
 			out vec3 v_Position;
 			out vec4 v_Color;
@@ -60,7 +63,7 @@ public:
 			void main() {
 				v_Position = a_Position;
 				v_Color = a_Color;
-				gl_Position = u_ProjectionView * vec4(a_Position, 1.0);
+				gl_Position = u_ProjectionView * u_Transform * vec4(a_Position, 1.0);
 			}
 		)";
 
@@ -104,13 +107,14 @@ public:
 			layout(location = 0) in vec3 a_Position;
 
 			uniform mat4 u_ProjectionView;
+			uniform mat4 u_Transform;
 
 			out vec3 v_Position;
 
 			void main()
 			{
 				v_Position = a_Position;
-				gl_Position = u_ProjectionView * vec4(a_Position, 1.0);	
+				gl_Position = u_ProjectionView * u_Transform * vec4(a_Position, 1.0);	
 			}
 		)";
 
@@ -149,6 +153,18 @@ public:
 		else if (Fireworks::Input::IsKeyPressed(FZ_KEY_D))
 			m_CameraRotation += m_CameraRotationSpeed * timestep;
 
+		if (Fireworks::Input::IsKeyPressed(FZ_KEY_J))
+			m_SquarePosition.x += m_SquareMoveSpeed * timestep;
+
+		else if (Fireworks::Input::IsKeyPressed(FZ_KEY_L))
+			m_SquarePosition.x -= m_SquareMoveSpeed * timestep;
+
+		if (Fireworks::Input::IsKeyPressed(FZ_KEY_I))
+			m_SquarePosition.y -= m_SquareMoveSpeed * timestep;
+
+		else if (Fireworks::Input::IsKeyPressed(FZ_KEY_K))
+			m_SquarePosition.y += m_SquareMoveSpeed * timestep;
+
 		Fireworks::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Fireworks::RenderCommand::Clear();
 
@@ -157,7 +173,15 @@ public:
 
 		Fireworks::Renderer::BeginScene(m_Camera);
 		{
-			Fireworks::Renderer::Submit(m_BlueShader, m_SquareVA);
+			static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+
+			for (int y = 0; y < 20; y++) {
+				for (int x = 0; x < 20; x++) {
+					glm::vec3 position(x * 0.11f, y * 0.11f, 0.0f);
+					glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * scale;
+					Fireworks::Renderer::Submit(m_BlueShader, m_SquareVA, transform);
+				}
+			}
 			Fireworks::Renderer::Submit(m_Shader, m_VertexArray);
 			Fireworks::Renderer::EndScene();
 		}
@@ -184,6 +208,9 @@ private:
 
 	float m_CameraRotation = 0.0f;
 	float m_CameraRotationSpeed = 180.0f;
+
+	glm::vec3 m_SquarePosition;
+	float m_SquareMoveSpeed = 3.0f;
 };
 
 class Sandbox : public Fireworks::Application {
