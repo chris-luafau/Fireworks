@@ -6,6 +6,12 @@ namespace Fireworks {
 
 	class FIREWORKS_API Input {
 	public:
+		// Singleton class, so we should delete these methods to ensure we don't accidentally create copies.
+		// Public as recommended by Scott Meyers in Effective Modern C++ because it result in better error messages 
+		// due to the compiler's behavior to check accessibility before deleted status.
+		Input(const Input&) = delete;
+		Input& operator=(const Input&) = delete;
+
 		inline static bool IsKeyPressed(int keycode) { return  s_Instance->IsKeyPressedImpl(keycode); }
 		
 		inline static bool IsMouseButtonPressed(int button) { return  s_Instance->IsMouseButtonPressedImpl(button); }
@@ -14,6 +20,10 @@ namespace Fireworks {
 		inline static float GetMouseY() { return  s_Instance->GetMouseYImpl(); }
 
 	protected:
+		// Singleton class, so we want to put the constructor in protected or private to prevent 
+		// direct construction calls with the 'new' operator.
+		Input() = default;
+
 		// Will be implemented per platform.
 		virtual bool IsKeyPressedImpl(int keycode) = 0;
 
