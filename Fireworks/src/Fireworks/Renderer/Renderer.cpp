@@ -20,6 +20,9 @@ namespace Fireworks {
 		shader->UploadUniformMat4("u_ProjectionView", s_SceneData->ProjectionViewMatrix);
 		shader->UploadUniformMat4("u_Transform", transform);
 
+		// TODO
+		// mi.Bind();
+
 		vertexArray->Bind();
 		RenderCommand::DrawIndexed(vertexArray);
 	}

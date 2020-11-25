@@ -6,7 +6,7 @@
 
 class ExampleLayer : public Fireworks::Layer {
 public:
-	ExampleLayer() 
+	ExampleLayer()
 		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f), m_SquarePosition(0.0f) {
 
 		// To render a triangle, we need:
@@ -101,7 +101,7 @@ public:
 		squareIB.reset(Fireworks::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
-		std::string blueShaderVertexSrc = R"(
+		std::string flatShaderVertexSrc = R"(
 			#version 330 core
 			
 			layout(location = 0) in vec3 a_Position;
@@ -118,20 +118,22 @@ public:
 			}
 		)";
 
-		std::string blueShaderFragmentSrc = R"(
+		std::string flatShaderFragmentSrc = R"(
 			#version 330 core
 			
 			layout(location = 0) out vec4 color;
+
+			uniform vec4 u_Color;
 
 			in vec3 v_Position;
 
 			void main()
 			{
-				color = vec4(0.2, 0.3, 0.5, 1.0);
+				color = u_Color;
 			}
 		)";
 
-		m_BlueShader.reset(new Fireworks::Shader(blueShaderVertexSrc, blueShaderFragmentSrc));
+		m_FlatColorShader.reset(new Fireworks::Shader(flatShaderVertexSrc, flatShaderFragmentSrc));
 	}
 
 	void OnUpdate(Fireworks::Timestep timestep) override {
@@ -153,18 +155,6 @@ public:
 		else if (Fireworks::Input::IsKeyPressed(FZ_KEY_D))
 			m_CameraRotation += m_CameraRotationSpeed * timestep;
 
-		if (Fireworks::Input::IsKeyPressed(FZ_KEY_J))
-			m_SquarePosition.x += m_SquareMoveSpeed * timestep;
-
-		else if (Fireworks::Input::IsKeyPressed(FZ_KEY_L))
-			m_SquarePosition.x -= m_SquareMoveSpeed * timestep;
-
-		if (Fireworks::Input::IsKeyPressed(FZ_KEY_I))
-			m_SquarePosition.y -= m_SquareMoveSpeed * timestep;
-
-		else if (Fireworks::Input::IsKeyPressed(FZ_KEY_K))
-			m_SquarePosition.y += m_SquareMoveSpeed * timestep;
-
 		Fireworks::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Fireworks::RenderCommand::Clear();
 
@@ -175,11 +165,26 @@ public:
 		{
 			static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
+			glm::vec4 redColor(0.8f, 0.2f, 0.3f, 1.0f);
+			glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.0f);
+
+			// TODO
+			//Fireworks::MaterialRef material = new Fireworks::Material(m_FlatColorShader);
+			//Fireworks::MaterialRef mi = new Fireworks::MaterialInstance(material);
+			//
+			//mi->SetValue("u_Color", redColor);
+			//mi->SetTexture("u_AlbedoMap", texture);
+			//squareMesh->SetMaterial(material);
+
 			for (int y = 0; y < 20; y++) {
 				for (int x = 0; x < 20; x++) {
 					glm::vec3 position(x * 0.11f, y * 0.11f, 0.0f);
 					glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * scale;
-					Fireworks::Renderer::Submit(m_BlueShader, m_SquareVA, transform);
+					if (x % 2 == 0)
+						m_FlatColorShader->UploadUniformFloat4("u_Color", redColor);
+					else  
+						m_FlatColorShader->UploadUniformFloat4("u_Color", blueColor);
+					Fireworks::Renderer::Submit(m_FlatColorShader ,m_SquareVA, transform);
 				}
 			}
 			Fireworks::Renderer::Submit(m_Shader, m_VertexArray);
@@ -198,8 +203,8 @@ public:
 private:
 	std::shared_ptr<Fireworks::Shader> m_Shader;
 	std::shared_ptr<Fireworks::VertexArray> m_VertexArray;
-		
-	std::shared_ptr<Fireworks::Shader> m_BlueShader;
+
+	std::shared_ptr<Fireworks::Shader> m_FlatColorShader;
 	std::shared_ptr<Fireworks::VertexArray> m_SquareVA;
 
 	Fireworks::OrthographicCamera m_Camera;
