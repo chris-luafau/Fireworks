@@ -2,7 +2,7 @@
 
 #include "Core.h"
 
-#include"Window.h"
+#include "Window.h"
 #include "Fireworks/LayerStack.h"
 #include "Fireworks/Events/Event.h"
 #include "Fireworks/Events/ApplicationEvent.h"
