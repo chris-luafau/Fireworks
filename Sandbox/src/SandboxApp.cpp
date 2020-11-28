@@ -26,7 +26,7 @@ public:
 		};
 
 		// Upload vertices to the GPU.
-		std::shared_ptr<Fireworks::VertexBuffer> vertexBuffer;
+		Fireworks::Ref<Fireworks::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Fireworks::VertexBuffer::Create(vertices, sizeof(vertices)));
 		Fireworks::BufferLayout layout = {
 			{ Fireworks::ShaderDataType::Float3, "a_Position" },
@@ -37,7 +37,7 @@ public:
 
 		uint32_t indices[3] = { 0, 1, 2 };
 		// Abstract the creation of the index buffer by calling our custom API instead of directly calling OpenGL functions.
-		std::shared_ptr<Fireworks::IndexBuffer> indexBuffer;
+		Fireworks::Ref<Fireworks::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Fireworks::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -93,7 +93,7 @@ public:
 		m_Shader.reset(Fireworks::Shader::Create(vertexSrc, fragmentSrc));
 
 		// Draw a square
-		std::shared_ptr<Fireworks::VertexBuffer> squareVB;
+		Fireworks::Ref<Fireworks::VertexBuffer> squareVB;
 		squareVB.reset(Fireworks::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
 			{ Fireworks::ShaderDataType::Float3, "a_Position" }
@@ -101,7 +101,7 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Fireworks::IndexBuffer> squareIB;
+		Fireworks::Ref<Fireworks::IndexBuffer> squareIB;
 		squareIB.reset(Fireworks::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -205,11 +205,11 @@ public:
 	}
 
 private:
-	std::shared_ptr<Fireworks::Shader> m_Shader;
-	std::shared_ptr<Fireworks::VertexArray> m_VertexArray;
-
-	std::shared_ptr<Fireworks::Shader> m_FlatColorShader;
-	std::shared_ptr<Fireworks::VertexArray> m_SquareVA;
+	Fireworks::Ref<Fireworks::Shader> m_Shader;
+	Fireworks::Ref<Fireworks::VertexArray> m_VertexArray;
+	
+	Fireworks::Ref<Fireworks::Shader> m_FlatColorShader;
+	Fireworks::Ref<Fireworks::VertexArray> m_SquareVA;
 
 	Fireworks::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;

@@ -33,6 +33,7 @@
 #define FZ_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
 
 namespace Fireworks {
+	// Adding Scope and Ref to explicitly define if a resource is specifically Fireworks-related. Will be useful in the future for things like assets and an asset manager.
 	template<typename T>
 	using Scope = std::unique_ptr<T>;
 
