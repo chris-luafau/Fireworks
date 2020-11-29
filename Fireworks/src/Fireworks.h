@@ -19,8 +19,9 @@
 #include "Fireworks/Renderer/Renderer.h"
 #include "Fireworks/Renderer/RenderCommand.h"
 
-#include "Fireworks/Renderer/Shader.h"
 #include "Fireworks/Renderer/Buffer.h"
+#include "Fireworks/Renderer/Shader.h"
+#include "Fireworks/Renderer/Texture.h"
 #include "Fireworks/Renderer/VertexArray.h"
 
 #include "Fireworks/Renderer/OrthographicCamera.h"

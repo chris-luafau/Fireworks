@@ -23,5 +23,4 @@ namespace Fireworks {
 	private:
 		static API s_API;
 	};
-
 }
