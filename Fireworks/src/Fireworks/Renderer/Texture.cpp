@@ -6,9 +6,10 @@
 namespace Fireworks {
 
 	Ref<Texture2D> Texture2D::Create(const std::string& path) {
-		switch (Renderer::GetAPI()) {
-			// TODO
-		}
+		// TODO
+		// switch (Renderer::GetAPI()) {
+		// 
+		// }
 
 		FZ_CORE_ASSERT(false, "Unknown RendererAPI.");
 		return nullptr;
