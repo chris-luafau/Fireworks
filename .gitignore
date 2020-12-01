@@ -2,6 +2,13 @@
 .vs/
 /bin/
 bin-int/
+!vendor/bin/premake/
 
 # Files
 *.user
+
+# vs files
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
