@@ -8,6 +8,7 @@ namespace Fireworks {
 
 	LayerStack::~LayerStack() {
 		for (Layer* layer : m_Layers) {
+			layer->OnDetach();
 			delete layer;
 		}
 	}
